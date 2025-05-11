@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Custom styling for the tab labels */
+.mat-mdc-tab .mdc-tab__text-label {
+    color: #6c757d !important;
+}

@@ -1,0 +1,52 @@
+<div class="coverage-container">
+    <h2 class="title">Software Camera Coverage Checker</h2>
+
+    <div class="target-range">
+        <h3>Target Range</h3>
+        <div class="range-inputs">
+            <label>Distance Range:</label>
+            <input type="number" [(ngModel)]="targetDistance[0]" step="0.1" />
+            -
+            <input type="number" [(ngModel)]="targetDistance[1]" step="0.1" />
+        </div>
+
+        <div class="range-inputs">
+            <label>Light Range:</label>
+            <input type="number" [(ngModel)]="targetLight[0]" step="1" />
+            -
+            <input type="number" [(ngModel)]="targetLight[1]" step="1" />
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="hardware-cameras">
+        <h3>Hardware Cameras</h3>
+        <div *ngFor="let cam of hardwareCameras; let i = index" class="camera-entry">
+            <strong>Camera {{ i + 1 }}</strong>
+            <div class="range-inputs">
+                <label>Distance:</label>
+                <input type="number" [(ngModel)]="cam.distance[0]" step="0.1" />
+                -
+                <input type="number" [(ngModel)]="cam.distance[1]" step="0.1" />
+            </div>
+
+            <div class="range-inputs">
+                <label>Light:</label>
+                <input type="number" [(ngModel)]="cam.light[0]" step="1" />
+                -
+                <input type="number" [(ngModel)]="cam.light[1]" step="1" />
+            </div>
+
+            <button class="remove-btn" (click)="removeCamera(i)">Remove</button>
+            <hr />
+        </div>
+    </div>
+
+    <div class="buttons-container">
+        <button class="add-camera-btn" (click)="addCamera()">➕ Add Camera</button>
+        <button class="check-btn" (click)="checkCoverage()">✅ Check Coverage</button>
+    </div>
+
+    <p *ngIf="result" class="result-message"><strong>{{ result }}</strong></p>
+</div>
